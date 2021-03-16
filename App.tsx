@@ -1,15 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import HomeScreen from './src/screens/HomeScreen';
+import EditorScreen from './src/screens/EditorScreen';
+import PreviewScreen from './src/screens/PreviewScreen';
+
+const navigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Editor: EditorScreen,
+    Preview: PreviewScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      title: 'Monocat Code Editor',
+    },
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default createAppContainer(navigator);
