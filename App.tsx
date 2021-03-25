@@ -1,32 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import Routes from './src/navigation/Routes';
+import { NavigationContainer } from '@react-navigation/native';
 
-import HomeScreen from './src/screens/HomeScreen';
-import EditorScreen from './src/screens/EditorScreen';
-import PreviewScreen from './src/screens/PreviewScreen';
-
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Editor: EditorScreen,
-    Preview: PreviewScreen,
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      title: 'Monocat Code Editor',
+const App = () => {
+  return (
+    <PaperProvider>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </PaperProvider>
+  )
+},
+  styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-  }
-);
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default createAppContainer(navigator);
+export default App;
