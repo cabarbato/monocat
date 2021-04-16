@@ -1,4 +1,4 @@
-<code><img src="assets/images/kitten.png"></code>
+<code><img src="assets/images/splash.png" alt="monocat" style="max-width: 300px; max-height: auto;"></code>
 
 A React Native app to get preschool age children aquainted with the UX of an IDE. 
 
