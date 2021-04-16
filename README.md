@@ -1,4 +1,4 @@
-## 🐱 Monocat Code Editor
+<code><img src="assets/images/kitten.png"></code>
 
 A React Native app to get preschool age children aquainted with the UX of an IDE. 
 
