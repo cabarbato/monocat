@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, FlatList, Text, View, Button } from 'react-native';
-import Drag from '../components/code/Drag';
+import { withTheme } from 'react-native-paper';
+import EditorPane from '../components/editor/EditorPane';
+import menu_items from '../../assets/data/editor-menu.json'
 
 /* TODO: 
   1. Left nav bar - File, Search, Debug/Preview only for now
@@ -8,21 +10,14 @@ import Drag from '../components/code/Drag';
   3. Probably also a settings modal
 */
 
-const menu_items = [
-  { name: 'Code'},
-  { name: 'Style'},
-  { name: 'Debug' },
-  { name: 'Settings' },
-  { name: 'Help' },
-],
-  EditorScreen = () => <View style={styles.Content}>
+const EditorScreen = () => <View style={styles.Content}>
     <FlatList
       keyExtractor={el => el.name}
       data={menu_items}
       renderItem={({ item }) => <Button style={styles.MenuListItem} title={item.name} />}
     />
     <View style={styles.Editor}>
-      <Drag />
+      <EditorPane />
     </View>
   </View>
 
@@ -44,4 +39,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EditorScreen;
+export default withTheme(EditorScreen);

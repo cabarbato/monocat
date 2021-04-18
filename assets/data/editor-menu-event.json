@@ -1,0 +1,110 @@
+{
+  "code": {
+    "type": "drawer",
+    "contents": {
+      "animals": [
+        "cat",
+        "crow",
+        "dog",
+        "dragon",
+        "fish",
+        "frog",
+        "hippo",
+        "horse",
+        "otter",
+        "spider"
+      ],
+      "food": [
+        "apple-alt",
+        "bacon",
+        "bone",
+        "bread",
+        "carrot",
+        "cheese",
+        "cookie",
+        "egg",
+        "fish",
+        "hamburger",
+        "hotdog",
+        "ice-cream",
+        "lemon",
+        "pepper-hot",
+        "pizza"
+      ],
+      "toys": [
+        "baseball-ball",
+        "basketball-ball",
+        "biking",
+        "bowling-ball",
+        "chess",
+        "dice",
+        "football-ball",
+        "futbol",
+        "gamepad",
+        "golf-ball",
+        "hockey-puck",
+        "puzzle-piece",
+        "robot",
+        "skating",
+        "table-tennis",
+        "volleyball-ball"
+      ],
+      "house": [
+        "bath",
+        "bed",
+        "box-tissue",
+        "chair",
+        "coffee",
+        "couch",
+        "door-closed",
+        "fan",
+        "faucet",
+        "lightbulb",
+        "plug",
+        "shower",
+        "sink",
+        "soap",
+        "toilet-paper",
+        "tv"
+      ],
+      "school": [
+        "book-open",
+        "chalkboard-teacher",
+        "graduation-cap",
+        "laptop-code",
+        "microscope",
+        "music",
+        "school",
+        "shapes",
+        "theater-masks",
+        "eraser",
+        "pen-alt",
+        "pencil-alt",
+        "cut",
+        "globe",
+        "highlighter",
+        "ruler-horizontal"
+      ]
+    },
+    "help": {
+      "title": "Code",
+      "contents": ""
+    }
+  },
+  "style": {
+    "type": "drawer",
+    "contents": {
+      "fill": [],
+      "outline": []
+    }
+  },
+  "debug": {
+    "type": "modal"
+  },
+  "settings": {
+    "type": "modal"
+  },
+  "help": {
+    "type": "modal"
+  }
+}

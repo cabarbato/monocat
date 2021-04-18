@@ -4,10 +4,11 @@ import { StyleSheet } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import Routes from './src/navigation/Routes';
 import { NavigationContainer } from '@react-navigation/native';
+import theme from './assets/styles/theme';
 
 const App = () => {
   return (
-    <PaperProvider>
+    <PaperProvider theme={theme}>
       <NavigationContainer>
         <Routes />
       </NavigationContainer>

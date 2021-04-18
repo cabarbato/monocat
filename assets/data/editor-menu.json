@@ -1,0 +1,27 @@
+[
+    {
+        "name": "code",
+        "icon": "code",
+        "color": "blue"
+    },
+    {
+        "name": "style",
+        "icon": "palette",
+        "color": "purple"
+    },
+    {
+        "name": "debug",
+        "icon": "bug",
+        "color": "pink"
+    },
+    {
+        "name": "settings",
+        "icon": "cogs",
+        "color": "orange"
+    },
+    {
+        "name": "help",
+        "icon": "question",
+        "color": "green"
+    }
+]

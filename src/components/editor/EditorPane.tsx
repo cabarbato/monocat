@@ -2,9 +2,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { List, Chip, useTheme } from 'react-native-paper';
 
-const Drag = () => {
+const EditorPane = () => {
     return <>
-        <List.Section title="Images">
+        {/* <List.Section title="Images">
           <View style={styles.row}>
             <Chip
               mode="outlined"
@@ -15,22 +15,11 @@ const Drag = () => {
               Cat
             </Chip>
           </View>
-        </List.Section>
-        <List.Section title="Text">
-          <View style={styles.row}>
-            <Chip
-              mode="outlined"
-              onPress={() => {}}
-              style={styles.chip}
-            >
-              Robots Activate
-            </Chip>
-          </View>
-        </List.Section>
+        </List.Section> */}
     </>
 }
 
-Drag.title = 'Drag';
+EditorPane.title = 'EditorPane';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Drag;
+export default EditorPane;

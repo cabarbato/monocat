@@ -8,8 +8,8 @@ A React Native app to get preschool age children aquainted with the UX of an IDE
 * A storybook-like help modal for each feature that will verbally explain how to use the feature.
 * A visual drag-and-drop editor ux for Kids Who Can't Read Good
 
-### Planned Phases
-- [ ] Basic functionality
+### Working on:
+- [ ] UX/UI Design
 
 ### Progress: 
 ![0%](https://progress-bar.dev/0/?width=400)
