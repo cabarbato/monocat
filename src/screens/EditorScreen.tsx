@@ -1,57 +1,70 @@
-import React from 'react';
-import { StyleSheet, FlatList, Text, View } from 'react-native';
-import { Button , withTheme, FAB, List } from 'react-native-paper';
+import React, { useState } from 'react';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import { withTheme, FAB, List, Provider as PaperProvider } from 'react-native-paper';
 import EditorPane from '../containers/EditorPane';
+import EditorMenuItem from '../containers/EditorMenuItem';
+import EditorModal from '../containers/EditorModal';
+import theme from '../styles/theme';
 import menu_data from '../../assets/data/editor-menu.json';
-import menu_item_data from '../../assets/data/editor-menu-event.json';
 import { PropsType, StyleType } from '../typings';
 
 
-/* TODO: 
-  1. Left nav bar - File, Search, Debug/Preview only for now
-  2. Drag and Drop UX - maybe a limited number of chips to use for now?
-  3. Probably also a settings modal
-*/
+const EditorScreen = (props) => {
+  const [visible, setVisible] = useState(false),
+    windowWidth = Dimensions.get('window').width,
+    windowHeight = Dimensions.get('window').height;
 
-const styles: StyleType = StyleSheet.create({
-  Content: {
-    display: 'flex',
-    flexDirection: 'row',
-    padding: 20,
-  },
-  MenuList: {
+  const styles: StyleType = StyleSheet.create({
+    Content: {
+      display: 'flex',
+      flexDirection: 'row',
+      padding: 20,
+      innerHeight: windowHeight
+    },
+    MenuList: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: windowWidth / (windowWidth > 768 ? 4 : 2),
+      innerHeight: windowHeight,
+      margin: 20
+    },
+    Editor: {
+      flexGrow: 2,
+      innerHeight: windowHeight
+    },
+    Fab: {
+      position: 'absolute',
+      margin: 50,
+      right: 0,
+      bottom: 0,
+    }
+  });
 
-  },
-  MenuListItem: {
-    marginVertical: 50,
-    paddingVertical: 20
-  },
-  Editor: {
-    flexGrow: 2
-  }, 
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-  }
-});
+  return (
+    <PaperProvider theme={theme}>
+      <View style={styles.Content}>
+        <View style={styles.MenuList}>
+          <List.AccordionGroup>
+            {menu_data.map((d: PropsType) => <EditorMenuItem
+              name={d.name}
+              color={d.color}
+              icon={d.icon} />)}
+          </List.AccordionGroup>
+        </View>
 
-const EditorScreen = () => <View style={styles.Content}>
-  <List.AccordionGroup>
-    {menu_data.map((d) => <List.Accordion title={d.name} id={d.name} theme={styles.MenuListItem}>
-      {/* {menu_item_data[d.name]["type"] == "drawer" ? menu_item_data[d.name]["content"].map((datum) => <Button mode="contained">{datum}</Button>)} */}
-    </List.Accordion>)}
-  </List.AccordionGroup>
-  
-    <View style={styles.Editor}>
-      <EditorPane />
-      <FAB
-    style={styles.fab}
-    icon="play"
-    onPress={() => console.log('Pressed')}
-  />
-    </View>
-  </View>
+        <View style={styles.Editor}>
+          <EditorPane height={windowHeight} />
+          <FAB
+            style={styles.Fab}
+            icon="play"
+            onPress={() => props.navigation.navigate('Preview')}
+          />
+        </View>
+      </View>
+
+      <EditorModal visible={visible} setVisible={setVisible} />
+    </PaperProvider>
+  )
+}
 
 export default withTheme(EditorScreen);

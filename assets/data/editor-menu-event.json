@@ -1,7 +1,7 @@
 {
   "code": {
-    "type": "drawer",
-    "contents": [
+    "type": "draggable",
+    "content": [
         "cat",
         "dog",
         "dragon",
@@ -25,18 +25,11 @@
         "sink",
         "soap",
         "tv"
-      ],
-    "help": {
-      "title": "Code",
-      "contents": ""
-    }
+      ]
   },
   "style": {
     "type": "drawer",
-    "contents": {
-      "fill": [],
-      "outline": []
-    }
+    "content": ["color"]
   },
   "debug": {
     "type": "modal"

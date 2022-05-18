@@ -12,7 +12,7 @@
     {
         "name": "debug",
         "icon": "bug",
-        "color": "pink"
+        "color": "red"
     },
     {
         "name": "settings",
@@ -21,7 +21,7 @@
     },
     {
         "name": "help",
-        "icon": "question",
+        "icon": "help-circle",
         "color": "green"
     }
 ]

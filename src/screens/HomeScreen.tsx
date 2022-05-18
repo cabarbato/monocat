@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, withTheme } from 'react-native-paper';
 import { PropsType, StyleType } from '../typings';
 
 
@@ -23,7 +23,7 @@ const styles: StyleType = StyleSheet.create({
 });
 
 
-const EditorScreen = (props: PropsType) => (
+const HomeScreen = (props: PropsType) => (
   <View style={styles.HomeMain}>
     <Image
       style={styles.HomeLogo}
@@ -36,4 +36,4 @@ const EditorScreen = (props: PropsType) => (
   </View>
 );
 
-export default EditorScreen;
+export default withTheme(HomeScreen);

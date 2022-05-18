@@ -16,7 +16,8 @@ const colors: StyleType = {
 },
   theme: Theme = {
     ...DefaultTheme,
-    roundness: 20,
+    roundness: 100,
+    dark: false,
     colors: {
       ...colors,
       ...DefaultTheme.colors,
@@ -24,13 +25,14 @@ const colors: StyleType = {
       accent: colors.blue,
       background: colors.white,
       surface: colors.white,
-      text: colors.black,
-      disabled: colors.dark,
+      text: colors.purple,
+      disabled: colors.light,
       placeholder: colors.dark,
       backdrop: colors.black,
-      onSurface: colors.dark,
+      onSurface: colors.green,
       notification: colors.yellow
     },
   };
 
+export { colors };
 export default theme;
