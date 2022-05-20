@@ -5,7 +5,8 @@ import {
 
 
 const initialState = {
-  saving: "idle"
+  saving: "idle",
+  content: []
 };
 
 const setSave = createAsyncThunk(
@@ -18,7 +19,9 @@ const setSave = createAsyncThunk(
 const editorSlice = createSlice({
   name: 'editor',
   initialState,
-  reducers: {},
+  reducers: {
+  
+  },
   extraReducers: (builder) => {
     builder.addCase(setSave.fulfilled, (state, action) => {
       if (action.payload) {
@@ -32,9 +35,7 @@ const editorSlice = createSlice({
 })
 
 export const {
-  setCurrentQuestion,
-  setScore,
-  reset
+  addContent
 } = editorSlice.actions
 export {
   setSave

@@ -2,29 +2,9 @@
   "code": {
     "type": "draggable",
     "content": [
-        "cat",
-        "dog",
-        "dragon",
-        "fish",
-        "frog",
-        "horse",
-        "bone",
-        "bread",
-        "carrot",
-        "cheese",
-        "cookie",
-        "egg",
-        "hamburger",
-        "hotdog",
-        "pizza",
+        "mushroom",
         "robot",
-        "bath",
-        "bed",
-        "chair",
-        "shower",
-        "sink",
-        "soap",
-        "tv"
+        "cat"
       ]
   },
   "style": {

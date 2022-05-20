@@ -18,15 +18,15 @@ const EditorScreen = (props) => {
     Content: {
       display: 'flex',
       flexDirection: 'row',
-      padding: 20,
+      padding: 10,
       innerHeight: windowHeight
     },
     MenuList: {
       display: 'flex',
       flexDirection: 'column',
-      width: windowWidth / (windowWidth > 768 ? 4 : 2),
+      width: windowWidth / (windowWidth > 768 ? 3 : 2),
       innerHeight: windowHeight,
-      margin: 20
+      margin: 10,
     },
     Editor: {
       flexGrow: 2,
@@ -47,6 +47,7 @@ const EditorScreen = (props) => {
           <List.AccordionGroup>
             {menu_data.map((d: PropsType) => <EditorMenuItem
               name={d.name}
+              key={d.name}
               color={d.color}
               icon={d.icon} />)}
           </List.AccordionGroup>

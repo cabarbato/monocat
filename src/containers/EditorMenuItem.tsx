@@ -14,8 +14,8 @@ const EditorMenuItem = props => {
 
     const styles: StyleType = StyleSheet.create({
         Item: {
-            marginVertical: 2,
-            paddingVertical: 2,
+            marginVertical: 1,
+            paddingVertical: 0,
             paddingHorizontal: 5,
             color: colors.white,
             backgroundColor: colors[props.color],
@@ -23,14 +23,20 @@ const EditorMenuItem = props => {
         },
         ItemTitle: {
             color: colors.white,
-            fill: colors.white
-            },
+            fontFamily: 'Fredoka One',
+            textTransform: 'uppercase'
+
+        },
+        ItemIcon: {
+            color: colors.white,
+            marginVertical: 0
+        },
         ItemContainer: {
             alignItems: 'center',
             justifyContent: 'center',
             flexWrap: 'wrap',
             flexDirection: 'row',
-            color: colors.white,
+            paddingLeft: 0,
         }
     });
 
@@ -39,16 +45,19 @@ const EditorMenuItem = props => {
             title={props.name}
             key={props.name}
             id={props.name}
+            left={d => <List.Icon icon={props.icon} style={styles.ItemIcon} color={colors.white} />}
+            right={d => <List.Icon icon={d.isExpanded ? "chevron-down" : "chevron-left"} style={styles.ItemIcon} color={colors.white} />}
             style={styles.Item}
             titleStyle={styles.ItemTitle}>
             <View style={styles.ItemContainer}>
-                {menu_item_data[props.name].content.map((datum: string) => <DraggableChip key={datum} text={`<${datum}/>`} />)}
+                {menu_item_data[props.name].content.map((datum: string) => <DraggableChip key={datum} text={`<${datum}/>`} sx={styles.ItemTitle} />)}
             </View>
-        </List.Accordion> : <List.Item 
-            right={d => <List.Icon {...d} icon={props.icon} style={styles.ItemTitle} />}
+        </List.Accordion> : <List.Item
+            left={d => <List.Icon {...d} icon={props.icon} style={styles.ItemTitle} color={colors.white} />}
             title={props.name}
-            style={styles.Item} />
-   }</>
+            style={styles.Item}
+            titleStyle={styles.ItemTitle} />
+    }</>
 }
 
 export default withTheme(EditorMenuItem)

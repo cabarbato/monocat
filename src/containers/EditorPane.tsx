@@ -8,16 +8,16 @@ const EditorPane = (props) => {
 
   const styles = StyleSheet.create({
     Card: {
-      backgroundColor: colors.background,
-      margin: 20,
+      backgroundColor: colors.surface,
+      margin: 10,
       height: props.height - 150,
       borderRadius: 0
     },
     CardContent: {
-      backgroundColor: colors.background,
+      backgroundColor: colors.surface,
     }
   });
-  console.log(colors.background)
+
   return (
     <Card style={styles.Card}>
       <Card.Content style={styles.CardContent}>
