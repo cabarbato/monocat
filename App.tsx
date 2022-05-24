@@ -24,13 +24,16 @@ const App = () => {
     setState({ fontsLoaded: true });
   }
   React.useEffect(() => {loadFontsAsync()}, [])
+  
+  if (state.fontsLoaded) {
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <Routes />
       </NavigationContainer>
     </PaperProvider>
-  )
+  )}
+  else return <></>
 };
 
 

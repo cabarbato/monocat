@@ -27,10 +27,14 @@ const EditorScreen = (props) => {
       width: windowWidth / (windowWidth > 768 ? 3 : 2),
       innerHeight: windowHeight,
       margin: 10,
+      zIndex: 3,
+      elevation: 3
     },
     Editor: {
       flexGrow: 2,
-      innerHeight: windowHeight
+      innerHeight: windowHeight,
+      zIndex: 2,
+      elevation: 2
     },
     Fab: {
       position: 'absolute',
