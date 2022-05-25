@@ -36,9 +36,10 @@ const colors: StyleType = {
     ios: _fontConfig,
     android: _fontConfig,
   },
+  root_size = 10,
   theme: Theme = {
     ...DefaultTheme,
-    roundness: 100,
+    roundness: root_size * 10,
     dark: false,
     fonts: configureFonts(fontConfig),
     colors: {
@@ -57,5 +58,5 @@ const colors: StyleType = {
     },
   };
 
-export { colors };
+export { colors, root_size };
 export default theme;

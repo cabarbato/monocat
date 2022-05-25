@@ -6,7 +6,14 @@ import {
 
 const initialState = {
   saving: "idle",
-  content: []
+  content: [],
+  active_menu: null,
+  dropZoneValues: null,
+  modal: {
+    title: null,
+    content: null,
+    open: false
+  }
 };
 
 const setSave = createAsyncThunk(
@@ -20,7 +27,22 @@ const editorSlice = createSlice({
   name: 'editor',
   initialState,
   reducers: {
-  
+    setActiveMenu(state, action) {
+      state.active_menu = action.payload === state.active_menu ? null : action.payload
+    },
+    openModal(state, action) {
+      state.modal = {
+        ...action.payload,
+        open: true
+      }
+    },
+    closeModal(state) {
+      state.modal = initialState.modal
+    },
+    setDropZone(state, action) {
+      state.dropZoneValues = action.payload
+    },
+    addElement(state, action) {}
   },
   extraReducers: (builder) => {
     builder.addCase(setSave.fulfilled, (state, action) => {
@@ -35,9 +57,14 @@ const editorSlice = createSlice({
 })
 
 export const {
-  addContent
+  setActiveMenu,
+  setDropZone,
+  openModal,
+  closeModal,
+  addContent,
+  addElement
 } = editorSlice.actions
 export {
-  setSave
+  setSave,
 }
 export default editorSlice.reducer

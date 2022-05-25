@@ -1,7 +1,9 @@
 import React from 'react';
 import { Image, View, StyleSheet, Dimensions } from 'react-native';
 import { Button, withTheme } from 'react-native-paper';
+import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
+import { windowHeight, windowWidth } from '../utils';
 
 
 /* TODO: 
@@ -11,23 +13,20 @@ import { PropsType, StyleType } from '../typings';
 
 
 const HomeScreen = (props: PropsType) => {
-  const windowWidth = Dimensions.get('window').width,
-    windowHeight = Dimensions.get('window').height;
-
-
-
   const styles: StyleType = StyleSheet.create({
     Main: {
-      margin: "auto"
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      height: windowHeight,
+      
     },
     Logo: {
       width: windowHeight / 2,
       height: windowHeight / 2,
-      margin: "auto",
-      marginBottom: 10
+      marginBottom: root_size
     },
     Button: {
-      margin: "auto",
       width: windowHeight / 2,
     },
     ButtonText: {

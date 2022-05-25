@@ -7,6 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import theme from './src/styles/theme';
 import * as Font from 'expo-font';
 import { expo } from './app.json';
+import { Provider } from 'react-redux';
+import store from "./src/store";
 
 let customFonts = {
   'Courier Prime': require('./assets/fonts/CourierPrime-Regular.ttf'),
@@ -27,11 +29,13 @@ const App = () => {
   
   if (state.fontsLoaded) {
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   )}
   else return <></>
 };

@@ -12,7 +12,7 @@ A React Native app to get preschool age children aquainted with the UX of an IDE
 - [ ] UX/UI Design
 
 ### Progress: 
-![0%](https://progress-bar.dev/0/?width=400)
+![10%](https://progress-bar.dev/10/?width=400)
 
 ---
 ## Development Usage
