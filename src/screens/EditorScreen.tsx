@@ -18,7 +18,7 @@ const EditorScreen = (props) => {
       flexDirection: 'row',
       padding: root_size,
       alignItems: 'stretch',
-      maxHeight: windowHeight,
+      height: windowHeight,
       overflow: 'hidden'
     },
     MenuList: {
@@ -51,13 +51,12 @@ const EditorScreen = (props) => {
     <PaperProvider theme={theme}>
       <View style={styles.Content}>
         <View style={styles.MenuList}>
-          <List.AccordionGroup>
-            {menu_data.map((d: PropsType) => <EditorMenuItem
+            {menu_data.map((d: PropsType, i) => <EditorMenuItem
               name={d.name}
               key={d.name}
               color={d.color}
-              icon={d.icon} />)}
-          </List.AccordionGroup>
+              icon={d.icon}
+              zindex={menu_data.length - i} />)}
         </View>
 
         <View style={styles.Editor}>
