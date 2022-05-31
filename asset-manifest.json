@@ -1,26 +1,26 @@
 {
   "files": {
-    "app.js": "/static/js/app.545c6c8c.chunk.js",
-    "app.js.map": "/static/js/app.545c6c8c.chunk.js.map",
-    "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
-    "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
-    "static/js/2.4ab4b3c0.chunk.js": "/static/js/2.4ab4b3c0.chunk.js",
-    "static/js/2.4ab4b3c0.chunk.js.map": "/static/js/2.4ab4b3c0.chunk.js.map",
-    "fonts/CourierPrime-Bold.ttf": "/./fonts/CourierPrime-Bold.ttf",
-    "fonts/CourierPrime-Regular.ttf": "/./fonts/CourierPrime-Regular.ttf",
-    "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
-    "favicon-16.png": "/favicon-16.png",
-    "favicon-32.png": "/favicon-32.png",
-    "favicon.ico": "/favicon.ico",
-    "index.html": "/index.html",
-    "manifest.json": "/manifest.json",
-    "serve.json": "/serve.json",
-    "static/js/2.4ab4b3c0.chunk.js.LICENSE.txt": "/static/js/2.4ab4b3c0.chunk.js.LICENSE.txt",
-    "static/media/splash.png": "/static/media/splash.30be3f24.png"
+    "app.js": "/monocat/static/js/app.0e68e4f2.chunk.js",
+    "app.js.map": "/monocat/static/js/app.0e68e4f2.chunk.js.map",
+    "runtime~app.js": "/monocat/static/js/runtime~app.d3d2e7da.js",
+    "runtime~app.js.map": "/monocat/static/js/runtime~app.d3d2e7da.js.map",
+    "static/js/2.ada37e47.chunk.js": "/monocat/static/js/2.ada37e47.chunk.js",
+    "static/js/2.ada37e47.chunk.js.map": "/monocat/static/js/2.ada37e47.chunk.js.map",
+    "fonts/CourierPrime-Bold.ttf": "/monocat/./fonts/CourierPrime-Bold.ttf",
+    "fonts/CourierPrime-Regular.ttf": "/monocat/./fonts/CourierPrime-Regular.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/monocat/./fonts/MaterialCommunityIcons.ttf",
+    "favicon-16.png": "/monocat/favicon-16.png",
+    "favicon-32.png": "/monocat/favicon-32.png",
+    "favicon.ico": "/monocat/favicon.ico",
+    "index.html": "/monocat/index.html",
+    "manifest.json": "/monocat/manifest.json",
+    "serve.json": "/monocat/serve.json",
+    "static/js/2.ada37e47.chunk.js.LICENSE.txt": "/monocat/static/js/2.ada37e47.chunk.js.LICENSE.txt",
+    "static/media/splash.png": "/monocat/static/media/splash.30be3f24.png"
   },
   "entrypoints": [
-    "static/js/runtime~app.2e9f1821.js",
-    "static/js/2.4ab4b3c0.chunk.js",
-    "static/js/app.545c6c8c.chunk.js"
+    "static/js/runtime~app.d3d2e7da.js",
+    "static/js/2.ada37e47.chunk.js",
+    "static/js/app.0e68e4f2.chunk.js"
   ]
 }
