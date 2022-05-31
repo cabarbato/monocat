@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Card, useTheme, withTheme } from 'react-native-paper';
+import { Card, List, useTheme, withTheme } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { setDropZone } from '../features/editorSlice';
-import { root_size } from '../styles/theme';
-import { windowHeight } from '../utils/breakpoints';
+import { root_size, primary } from '../styles/theme';
 
 const mapStateToProps = state => ({
   content: state.editor.content
@@ -14,7 +13,8 @@ const mapStateToProps = state => ({
   })
 
 const EditorPane = (props) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme(),
+  primary_arr = Object.values(primary)
 
   const styles = StyleSheet.create({
     Card: {
@@ -23,17 +23,19 @@ const EditorPane = (props) => {
       borderRadius: 0,
       display: 'flex',
       alignItems: 'stretch',
-      width: `calc(100% - ${root_size * 2}px)`
+      width: props.width - (root_size * 6)
     },
     CardContent: {
       backgroundColor: colors.surface,
+      fontFamily: 'Courier Prime Bold',
+      fontSize: '1.5rem'
     }
   });
-
+  
   return (
     <Card style={styles.Card}>
       <Card.Content style={styles.CardContent} onLayout={props.onSetDropzone}>
-        {props.content}
+        {props.content.length ? props.content.map((d,i) => (<List.Item key={d} title={d} titleStyle={{color: primary_arr[i]}} />)) : null}
       </Card.Content>
     </Card>
   )

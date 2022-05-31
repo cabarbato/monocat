@@ -42,7 +42,9 @@ const editorSlice = createSlice({
     setDropZone(state, action) {
       state.dropZoneValues = action.payload
     },
-    addElement(state, action) {}
+    addElement(state, action) {
+      state.content.push(action.payload)
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(setSave.fulfilled, (state, action) => {

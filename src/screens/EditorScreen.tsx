@@ -11,7 +11,7 @@ import { windowHeight, windowWidth } from '../utils';
 
 
 const EditorScreen = (props) => {
-
+  const column_width = windowWidth / (windowWidth > 768 ? 3 : 2)
   const styles: StyleType = StyleSheet.create({
     Content: {
       display: 'flex',
@@ -24,7 +24,7 @@ const EditorScreen = (props) => {
     MenuList: {
       display: 'flex',
       flexDirection: 'column',
-      width: windowWidth / (windowWidth > 768 ? 3 : 2),
+      width: column_width,
       innerHeight: windowHeight,
       margin: root_size,
       zIndex: 3,
@@ -37,12 +37,13 @@ const EditorScreen = (props) => {
       display: 'flex',
       alignItems: 'stretch',
       flexDirection: 'row',
-      position: 'relative'
+      position: 'relative',
+      width: windowWidth - column_width
     },
     Fab: {
       position: 'absolute',
-      margin: 50,
-      right: 0,
+      margin: root_size * 4,
+      right: root_size * 4,
       bottom: 0,
     }
   });
@@ -60,7 +61,7 @@ const EditorScreen = (props) => {
         </View>
 
         <View style={styles.Editor}>
-          <EditorPane height={windowHeight} />
+          <EditorPane height={windowHeight} width={windowWidth - column_width} />
           <FAB
             style={styles.Fab}
             icon="play"

@@ -2,18 +2,21 @@ import { DefaultTheme, configureFonts } from 'react-native-paper';
 import { StyleType } from '../typings';
 import { Theme } from 'react-native-paper/lib/typescript/types';
 
-const colors: StyleType = {
-  white: '#FFFFFF',
-  light: '#F3F3F1',
-  dark: '#D3D4D0',
-  black: '#272822',
+const primary: StyleType = {
   red: '#F92672',
   purple: '#AE81FF',
   blue: '#66D9EF',
   green: '#A6E22E',
   yellow: '#E6DB74',
-  orange: '#FD971F',
+  orange: '#FD971F'
 },
+  colors: StyleType = {
+    white: '#FFFFFF',
+    light: '#F3F3F1',
+    dark: '#D3D4D0',
+    black: '#272822',
+    ...primary
+  },
   _fontConfig = {
     regular: {
       fontFamily: 'Courier Prime',
@@ -58,5 +61,5 @@ const colors: StyleType = {
     },
   };
 
-export { colors, root_size };
+export { colors, root_size, primary };
 export default theme;

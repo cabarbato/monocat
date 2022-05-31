@@ -54,7 +54,8 @@ const EditorMenuItem = props => {
             flexWrap: 'wrap',
             flexDirection: 'row',
             paddingLeft: 0,
-            zIndex: props.zindex
+            zIndex: props.zindex,
+            pointerEvents: 'all'
         }
     });
     

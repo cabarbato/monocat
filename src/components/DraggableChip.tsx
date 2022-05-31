@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
-import { PanResponder, Animated, Easing, StyleSheet } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { PanResponder, Animated, StyleSheet } from 'react-native';
 import { useTheme, Chip } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { addElement } from '../features/editorSlice';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
+import { between, windowHeight } from '../utils';
 
 
 const mapStateToProps = state => ({
@@ -15,49 +16,56 @@ const mapStateToProps = state => ({
     })
 
 const DraggableChip = (props) => {
-    const [state, setState] = useState({
-        showDraggable: true,
-        pan: useRef(new Animated.ValueXY()).current
-    })
-    const panResponder = PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onPanResponderMove: Animated.event([null, {
-            dx: state.pan.x,
-            dy: state.pan.y
-        }],
-            {
-                //useNativeDriver: true, // Needs to be explicitly set
-                // @ts-ignore
-                listener: (event, gestureState) => console.log(event, gestureState)
-            },
-        ),
-        onPanResponderRelease: (e, gesture) => {
-            console.log(e)
-            if (isDropZone(gesture)) {
-                setState({
-                    ...state,
-                    showDraggable: false
+    let [is_draggable, setDraggable] = useState(true);
+    const pan = useRef(new Animated.ValueXY()).current,
+        isDropZone = (gesture) => {
+            const { left, top, width } = props.dropZoneValues,
+                is_in_x = between(gesture.moveX, [left, left + width]),
+                is_in_y = between(gesture.moveY, [top, windowHeight]);
+
+            return is_in_x && is_in_y;
+        },
+        panResponder = useRef(PanResponder.create({
+            onMoveShouldSetPanResponder: () => true,
+            onPanResponderGrant: () => {
+                pan.setOffset({
+                    x: pan.x._value,
+                    y: pan.y._value
                 });
-            } else {
-                Animated.spring(
-                    state.pan,
+            },
+            onPanResponderMove: Animated.event(
+                [
+                    null,
+                    { dx: pan.x, dy: pan.y }
+                ],
+                {
+                    useNativeDriver: false, // Needs to be explicitly set
                     // @ts-ignore
-                    { toValue: { x: 0, y: 0 } }
-                ).start();
+                    // listener: (event, gestureState) => console.log(event, gestureState)
+                },
+            ),
+            onPanResponderRelease: (e, gesture) => {
+                if (isDropZone(gesture)) {
+                    const text = e.currentTarget.textContent
+                    props.onAddElement(text)
+                    setDraggable(false);
+                }
+                else {
+                    Animated.spring(
+                        pan,
+                        // @ts-ignore
+                        { toValue: { x: 0, y: 0 }, useNativeDriver: false }
+                    ).start();
+                }
             }
         }
-    })
-
-    function isDropZone(gesture) {
-        var dz = props.dropZoneValues;
-        return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
-    }
+        )).current;
 
     const { colors } = useTheme(),
         styles: StyleType = StyleSheet.create({
             View: {
                 zIndex: props.zindex,
-                elevation: props.zindex
+                elevation: props.zindex,
             },
             Chip: {
                 textAlign: 'center',
@@ -70,11 +78,13 @@ const DraggableChip = (props) => {
                 textTransform: 'none'
             }
         });
-        
-    if (state.showDraggable) {
+
+    if (is_draggable) {
         return <Animated.View
             {...panResponder.panHandlers}
-            style={[state.pan.getLayout(), styles.View]}>
+            style={{
+                transform: [{ translateX: pan.x }, { translateY: pan.y }]
+            }}>
             <Chip
                 mode="flat"
                 style={styles.Chip}
@@ -83,5 +93,6 @@ const DraggableChip = (props) => {
             >{props.text}</Chip>
         </Animated.View>
     }
+    else return <></>
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DraggableChip);
