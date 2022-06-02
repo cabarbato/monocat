@@ -6,6 +6,14 @@
   "short_name": "Monocat Code Editor",
   "start_url": "/?utm_source=web_app_manifest",
   "orientation": "landscape",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=monocat.pkg",
+      "id": "monocat.pkg"
+    }
+  ],
+  "prefer_related_applications": true,
   "icons": [
     {
       "src": "/monocat/pwa/chrome-icon/chrome-icon-144.png",
