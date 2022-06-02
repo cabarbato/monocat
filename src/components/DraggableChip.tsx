@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { PanResponder, Animated, StyleSheet } from 'react-native';
 import { useTheme, Chip } from 'react-native-paper';
 import { connect } from 'react-redux';
@@ -6,7 +6,9 @@ import { addElement } from '../features/editorSlice';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
 import { between, windowHeight } from '../utils';
+import playSound from '../features/sound';
 
+const audio = require('../../assets/audio');
 
 const mapStateToProps = state => ({
     dropZoneValues: state.editor.dropZoneValues,
@@ -16,6 +18,9 @@ const mapStateToProps = state => ({
     })
 
 const DraggableChip = (props) => {
+    const [sound, setSound] = useState(null);
+    useEffect(() => sound ? () => sound.unloadAsync() : undefined, [sound]);
+
     let [is_draggable, setDraggable] = useState(true);
     const pan = useRef(new Animated.ValueXY()).current,
         isDropZone = (gesture) => {
@@ -32,6 +37,8 @@ const DraggableChip = (props) => {
                     x: pan.x._value,
                     y: pan.y._value
                 });
+                
+                playSound(audio.sfx.pick).then(setSound)
             },
             onPanResponderMove: Animated.event(
                 [
@@ -49,6 +56,7 @@ const DraggableChip = (props) => {
                     const text = e.currentTarget.textContent
                     props.onAddElement(text)
                     setDraggable(false);
+                    playSound(audio.sfx.place).then(setSound)
                 }
                 else {
                     Animated.spring(
@@ -56,6 +64,8 @@ const DraggableChip = (props) => {
                         // @ts-ignore
                         { toValue: { x: 0, y: 0 }, useNativeDriver: false }
                     ).start();
+
+                    playSound(audio.sfx.miss).then(setSound)
                 }
             }
         }

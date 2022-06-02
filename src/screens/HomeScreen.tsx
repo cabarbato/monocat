@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, View, StyleSheet, Dimensions } from 'react-native';
 import { Button, withTheme } from 'react-native-paper';
+import playSound from '../features/sound';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
 import { windowHeight, windowWidth } from '../utils';
@@ -9,17 +10,33 @@ import { windowHeight, windowWidth } from '../utils';
 /* TODO: 
   1. Eventually convert buttons to create new/open existing projects
   2. Save files locally or authenticate and associate projects in a db?
+  3. create an index of images, similar to audio
 */
 
+const images = {
+  logo: {
+    alt: 'monocat',
+    url: require('../../assets/images/splash.png')
+  }
+},
+  audio = require('../../assets/audio');
 
 const HomeScreen = (props: PropsType) => {
+  const [sound, setSound] = useState(null);
+  const [music, setMusic] = useState(null);
+  useEffect(() => {
+    sound ? () => sound.unloadAsync() : undefined
+    /* playSound(audio.music.splash).then(setMusic)
+    return () => music.stopAsync() */
+  }, [sound]);
+
   const styles: StyleType = StyleSheet.create({
     Main: {
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
       height: windowHeight,
-      
+
     },
     Logo: {
       width: windowHeight / 2,
@@ -32,21 +49,24 @@ const HomeScreen = (props: PropsType) => {
     ButtonText: {
       fontFamily: 'Fredoka One',
       textTransform: 'uppercase'
-      }
+    }
   });
 
   return (
     <View style={styles.Main}>
       <Image
         style={styles.Logo}
-        source={require('../../assets/images/splash.png')}
+        source={images.logo.url}
       />
 
       <Button
         mode="contained"
         style={styles.Button}
         labelStyle={styles.ButtonText}
-        onPress={() => props.navigation.navigate('Editor')}>New Project</Button>
+        onPress={() => {
+          playSound(audio.sfx.preview).then(setSound)
+          props.navigation.navigate('Editor')
+        }}>New Project</Button>
     </View>
   )
 };

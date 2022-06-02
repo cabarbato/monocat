@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { withTheme, FAB, List, Provider as PaperProvider } from 'react-native-paper';
+import { withTheme, FAB, Provider as PaperProvider } from 'react-native-paper';
 import EditorPane from '../containers/EditorPane';
 import EditorMenuItem from '../containers/EditorMenuItem';
 import EditorModal from '../containers/EditorModal';
@@ -8,9 +8,14 @@ import theme, { root_size } from '../styles/theme';
 import menu_data from '../../assets/data/editor-menu.json';
 import { PropsType, StyleType } from '../typings';
 import { windowHeight, windowWidth } from '../utils';
+import playSound from '../features/sound';
 
+const audio = require('../../assets/audio');
 
 const EditorScreen = (props) => {
+  const [sound, setSound] = useState(null);
+  useEffect(() => sound ? () => sound.unloadAsync() : undefined, [sound]);
+
   const column_width = windowWidth / (windowWidth > 768 ? 3 : 2)
   const styles: StyleType = StyleSheet.create({
     Content: {
@@ -52,12 +57,14 @@ const EditorScreen = (props) => {
     <PaperProvider theme={theme}>
       <View style={styles.Content}>
         <View style={styles.MenuList}>
-            {menu_data.map((d: PropsType, i) => <EditorMenuItem
+          {menu_data.map((d: PropsType, i) => {
+            return d.active ? <EditorMenuItem
               name={d.name}
               key={d.name}
               color={d.color}
               icon={d.icon}
-              zindex={menu_data.length - i} />)}
+              zindex={menu_data.length - i} /> : null
+          })}
         </View>
 
         <View style={styles.Editor}>
@@ -65,7 +72,10 @@ const EditorScreen = (props) => {
           <FAB
             style={styles.Fab}
             icon="play"
-            onPress={() => props.navigation.navigate('Preview')}
+            onPress={() => {
+              playSound(audio.sfx.preview).then(setSound)
+              props.navigation.navigate('Preview')
+            }}
           />
         </View>
       </View>

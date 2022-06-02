@@ -2,26 +2,31 @@
     {
         "name": "code",
         "icon": "xml",
-        "color": "blue"
+        "color": "blue",
+        "active": true
     },
     {
         "name": "style",
         "icon": "palette",
-        "color": "purple"
+        "color": "purple",
+        "active": false
     },
     {
         "name": "debug",
         "icon": "bug",
-        "color": "red"
+        "color": "red",
+        "active": false
     },
     {
         "name": "settings",
         "icon": "cogs",
-        "color": "orange"
+        "color": "orange",
+        "active": false
     },
     {
         "name": "help",
         "icon": "help-circle",
-        "color": "green"
+        "color": "green",
+        "active": true
     }
 ]

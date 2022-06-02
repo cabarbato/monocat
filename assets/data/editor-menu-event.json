@@ -18,6 +18,7 @@
     "type": "modal"
   },
   "help": {
-    "type": "modal"
+    "type": "modal",
+    "content": "coming soon"
   }
 }
