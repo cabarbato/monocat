@@ -14,7 +14,11 @@ const audio = require('../../assets/audio');
 
 const EditorScreen = (props) => {
   const [sound, setSound] = useState(null);
-  useEffect(() => sound ? () => sound.unloadAsync() : undefined, [sound]);
+  const [music, setMusic] = useState(null);
+  useEffect(() => {
+    sound ? () => sound.unloadAsync() : undefined
+    return () => (music ? music.stopAsync() : undefined)
+  }, [sound, music]);
 
   const column_width = windowWidth / (windowWidth > 768 ? 3 : 2)
   const styles: StyleType = StyleSheet.create({
@@ -55,7 +59,9 @@ const EditorScreen = (props) => {
 
   return (
     <PaperProvider theme={theme}>
-      <View style={styles.Content}>
+      <View style={styles.Content} onLayout={() => {
+      !music ? playSound(audio.music.main).then(setMusic) : setMusic(null)
+    }}>
         <View style={styles.MenuList}>
           {menu_data.map((d: PropsType, i) => {
             return d.active ? <EditorMenuItem

@@ -26,9 +26,9 @@ const HomeScreen = (props: PropsType) => {
   const [music, setMusic] = useState(null);
   useEffect(() => {
     sound ? () => sound.unloadAsync() : undefined
-    /* playSound(audio.music.splash).then(setMusic)
-    return () => music.stopAsync() */
-  }, [sound]);
+    //music ? () => music.unloadAsync() : undefined
+    return () => (music ? music.stopAsync() : undefined)
+  }, [sound, music]);
 
   const styles: StyleType = StyleSheet.create({
     Main: {
@@ -53,7 +53,9 @@ const HomeScreen = (props: PropsType) => {
   });
 
   return (
-    <View style={styles.Main}>
+    <View style={styles.Main} onLayout={() => {
+      !music ? playSound(audio.music.splash).then(setMusic) : setMusic(null)
+    }}>
       <Image
         style={styles.Logo}
         source={images.logo.url}

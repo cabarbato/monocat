@@ -14,7 +14,7 @@ I have a 4 year-old daughter that insists she'll build robots one day, and that 
 - [ ] UX/UI Design
 - [X] Basic Scaffolding
 - [X] Drag And Drop Functionality
-- [ ] Sound FX/Music
+- [X] Sound FX/Music
 - [ ] Preview Graphics
 - [ ] Adding a color style option and state per chip
 - [ ] Modal text and graphics
