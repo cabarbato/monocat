@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import editorReducer from './features/editorSlice';
+import {editorReducer, settingsReducer} from './features';
 
 export default configureStore({
     reducer: {
-        editor: editorReducer
+        editor: editorReducer,
+        settings: settingsReducer
     }
 });

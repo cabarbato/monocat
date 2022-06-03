@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { addElement } from '../features/editorSlice';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
-import { between, windowHeight } from '../utils';
-import playSound from '../features/sound';
+import { between, windowHeight, playSound } from '../utils';
 
 const audio = require('../../assets/audio');
 

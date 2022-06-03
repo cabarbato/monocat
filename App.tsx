@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import Routes from './src/navigation/Routes';
@@ -29,13 +29,13 @@ const App = () => {
   
   if (state.fontsLoaded) {
   return (
-    <Provider store={store}>
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
-      </PaperProvider>
-    </Provider>
+      <Provider store={store}>
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        </PaperProvider>
+      </Provider>
   )}
   else return <></>
 };

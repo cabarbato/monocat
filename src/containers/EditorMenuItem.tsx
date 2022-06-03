@@ -7,7 +7,7 @@ import { StyleType } from '../typings';
 import { colors, root_size } from '../styles/theme';
 import { connect } from 'react-redux';
 import { openModal, setActiveMenu } from '../features/editorSlice';
-import playSound from '../features/sound';
+import { playSound } from '../utils';
 
 
 const audio = require('../../assets/audio');

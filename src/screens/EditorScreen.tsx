@@ -7,18 +7,21 @@ import EditorModal from '../containers/EditorModal';
 import theme, { root_size } from '../styles/theme';
 import menu_data from '../../assets/data/editor-menu.json';
 import { PropsType, StyleType } from '../typings';
-import { windowHeight, windowWidth } from '../utils';
-import playSound from '../features/sound';
+import { windowHeight, windowWidth, playSound } from '../utils';
 
-const audio = require('../../assets/audio');
+const audio = require('../../assets/audio'),
+  initial_state = {
+    sound: null,
+    music: null
+  };
 
 const EditorScreen = (props) => {
-  const [sound, setSound] = useState(null);
-  const [music, setMusic] = useState(null);
+  const [state, setState] = useState(initial_state);
+
   useEffect(() => {
-    sound ? () => sound.unloadAsync() : undefined
-    return () => (music ? music.stopAsync() : undefined)
-  }, [sound, music]);
+    state.sound ? () => state.sound.unloadAsync() : undefined
+    return () => state.music ? state.music.unloadAsync() : undefined
+  }, [state]);
 
   const column_width = windowWidth / (windowWidth > 768 ? 3 : 2)
   const styles: StyleType = StyleSheet.create({
@@ -60,8 +63,11 @@ const EditorScreen = (props) => {
   return (
     <PaperProvider theme={theme}>
       <View style={styles.Content} onLayout={() => {
-      !music ? playSound(audio.music.main).then(setMusic) : setMusic(null)
-    }}>
+        !state.music ? 
+          playSound(audio.music.bubble.url, { loop: true, volume: .33 })
+          .then(music => setState({ ...state, music })) :
+          setState({ ...state, music: null })
+      }}>
         <View style={styles.MenuList}>
           {menu_data.map((d: PropsType, i) => {
             return d.active ? <EditorMenuItem
@@ -79,7 +85,7 @@ const EditorScreen = (props) => {
             style={styles.Fab}
             icon="play"
             onPress={() => {
-              playSound(audio.sfx.preview).then(setSound)
+              playSound(audio.sfx.preview).then(sound => setState({ ...state, sound }))
               props.navigation.navigate('Preview')
             }}
           />

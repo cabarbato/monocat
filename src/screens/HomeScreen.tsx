@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, StyleSheet, Dimensions } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 import { Button, withTheme } from 'react-native-paper';
-import playSound from '../features/sound';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
-import { windowHeight, windowWidth } from '../utils';
+import { windowHeight, playSound } from '../utils';
 
 
 /* TODO: 
@@ -19,16 +18,19 @@ const images = {
     url: require('../../assets/images/splash.png')
   }
 },
-  audio = require('../../assets/audio');
+  audio = require('../../assets/audio'),
+  initial_state = {
+    sound: null,
+    music: null
+  };
 
 const HomeScreen = (props: PropsType) => {
-  const [sound, setSound] = useState(null);
-  const [music, setMusic] = useState(null);
+  const [state, setState] = useState(initial_state);
+
   useEffect(() => {
-    sound ? () => sound.unloadAsync() : undefined
-    //music ? () => music.unloadAsync() : undefined
-    return () => (music ? music.stopAsync() : undefined)
-  }, [sound, music]);
+    state.sound ? () => state.sound.unloadAsync() : undefined
+    return () => state.music ? state.music.unloadAsync() : undefined
+  }, [state]);
 
   const styles: StyleType = StyleSheet.create({
     Main: {
@@ -45,6 +47,7 @@ const HomeScreen = (props: PropsType) => {
     },
     Button: {
       width: windowHeight / 2,
+      minWidth: 120
     },
     ButtonText: {
       fontFamily: 'Fredoka One',
@@ -54,8 +57,11 @@ const HomeScreen = (props: PropsType) => {
 
   return (
     <View style={styles.Main} onLayout={() => {
-      !music ? playSound(audio.music.splash).then(setMusic) : setMusic(null)
-    }}>
+      !state.music ? 
+        playSound(audio.music.splash.url, { loop: true })
+        .then(music => setState({ ...state, music })) :
+        setState({ ...state, music: null })
+    }} >
       <Image
         style={styles.Logo}
         source={images.logo.url}
@@ -66,7 +72,7 @@ const HomeScreen = (props: PropsType) => {
         style={styles.Button}
         labelStyle={styles.ButtonText}
         onPress={() => {
-          playSound(audio.sfx.preview).then(setSound)
+          playSound(audio.sfx.preview).then((sound) => setState({ ...state, sound }))
           props.navigation.navigate('Editor')
         }}>New Project</Button>
     </View>
