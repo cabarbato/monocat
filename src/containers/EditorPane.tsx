@@ -4,6 +4,7 @@ import { Card, List, useTheme, withTheme } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { setDropZone } from '../features/editorSlice';
 import { root_size, primary } from '../styles/theme';
+import { jsxSyntax } from '../utils';
 
 const mapStateToProps = state => ({
   content: state.editor.content
@@ -35,7 +36,7 @@ const EditorPane = (props) => {
   return (
     <Card style={styles.Card}>
       <Card.Content style={styles.CardContent} onLayout={props.onSetDropzone}>
-        {props.content.length ? props.content.map((d,i) => (<List.Item key={d} title={d} titleStyle={{color: primary_arr[i]}} />)) : null}
+        {props.content.length ? props.content.map((d,i) => (<List.Item key={d} title={jsxSyntax(d)} titleStyle={{color: primary_arr[i]}} />)) : null}
       </Card.Content>
     </Card>
   )

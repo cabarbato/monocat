@@ -84,7 +84,7 @@ const EditorMenuItem = props => {
             <View style={styles.ItemContainer}>
                 {menu_item_data[props.name].content.map((datum: string, i, arr) => <DraggableChip
                     key={datum}
-                    text={`<${datum}/>`}
+                    text={datum}
                     zindex={arr.length - i} />)}
             </View>
         </List.Accordion> : <List.Item

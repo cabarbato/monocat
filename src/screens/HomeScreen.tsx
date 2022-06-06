@@ -38,7 +38,6 @@ const HomeScreen = (props: PropsType) => {
       alignItems: 'center',
       flexDirection: 'column',
       height: windowHeight,
-
     },
     Logo: {
       width: windowHeight / 2,

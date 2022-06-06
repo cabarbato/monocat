@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { PanResponder, Animated, StyleSheet } from 'react-native';
+import { PanResponder, Animated, StyleSheet, Text } from 'react-native';
 import { useTheme, Chip } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { addElement } from '../features/editorSlice';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
-import { between, windowHeight, playSound } from '../utils';
+import { between, windowHeight, playSound, jsxSyntax } from '../utils';
 
 const audio = require('../../assets/audio');
 
@@ -52,7 +52,7 @@ const DraggableChip = (props) => {
             ),
             onPanResponderRelease: (e, gesture) => {
                 if (isDropZone(gesture)) {
-                    const text = e.currentTarget.textContent
+                    const text = e.currentTarget.querySelectorAll('span')[1].textContent
                     props.onAddElement(text)
                     setDraggable(false);
                     playSound(audio.sfx.place).then(setSound)
@@ -99,7 +99,9 @@ const DraggableChip = (props) => {
                 style={styles.Chip}
                 textStyle={styles.ChipText}
             // @ts-ignore
-            >{props.text}</Chip>
+            >
+            {jsxSyntax(props.text)}
+            </Chip>
         </Animated.View>
     }
     else return <></>

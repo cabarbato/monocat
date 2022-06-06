@@ -2,9 +2,16 @@
   "code": {
     "type": "draggable",
     "content": [
-        "mushroom",
+        "Alexis",
+        "bat",
+        "bee",
+        "butterfly",
+        "cat",
+        "gnome",
         "robot",
-        "cat"
+        "snake",
+        "spider",
+        "Tony"
       ]
   },
   "style": {
