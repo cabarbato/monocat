@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Surface, withTheme } from 'react-native-paper';
 import { connect } from 'react-redux';
+import Svg from '../components/Svg';
 import { root_size } from '../styles/theme';
 import { PropsType, StyleType } from '../typings';
 import { windowHeight } from '../utils';
@@ -34,7 +35,7 @@ const PreviewScreen = (props: PropsType) => {
   return (
     <View>
       <Surface style={styles.Preview}>
-      {props.content.map(d => <Image style={styles.Images} source={images[d].url} />)}
+      {props.content.map(d => <Svg image={images[d]} key={d} />)}
       </Surface>
     </View>
   )

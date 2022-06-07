@@ -15,14 +15,14 @@ I have a 4 year-old daughter that insists she'll build robots one day, and that 
 - [X] Basic Scaffolding
 - [X] Drag And Drop Functionality
 - [X] Sound FX/Music
-- [ ] Preview Graphics
+- [X] Preview Graphics
 - [ ] Adding a color style option and state per chip
 - [ ] Modal text and graphics
 - [ ] Possibly adding horizontal rules and/or line breaks, and keeping images inline
 - [ ] A lot of refactoring
 
 ### Progress: 
-![15%](https://progress-bar.dev/15/?width=400)
+![20%](https://progress-bar.dev/20/?width=400)
 
 ---
 ## Sources

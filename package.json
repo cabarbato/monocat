@@ -12,6 +12,12 @@
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo build:web"
   },
+  "resolutions": {
+    "svgo": "^2.8.0",
+    "@svgr/babel-preset": "^6.1.0",
+    "@svgr/plugin-jsx": "^6.1.2",
+    "@svgr/plugin-svgo": "^6.1.2"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -20,6 +26,7 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/stack": "^6.2.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@svgr/webpack": "^5.5.0",
     "expo": "~45.0.0",
     "expo-av": "~11.2.3",
     "expo-status-bar": "~1.3.0",
@@ -42,7 +49,9 @@
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
     "gh-pages": "^4.0.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "prettier": "^2.5.1",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "private": true
 }
