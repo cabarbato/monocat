@@ -28,7 +28,8 @@ I have a 4 year-old daughter that insists she'll build robots one day, and that 
 ## Sources
 
 ### Images & Fonts
-While some of the images were drawn by myself, most iconography used is from [Material Design Icons](https://materialdesignicons.com/). 
+While some of the images were drawn by myself, most iconography used is from [Material Design Icons](https://materialdesignicons.com/). I'd also like to credit Alexis for all of the preview image pencilling.
+
 All fonts were downloaded from [Google Fonts](https://fonts.google.com/)
 
 ### SFX & Music
